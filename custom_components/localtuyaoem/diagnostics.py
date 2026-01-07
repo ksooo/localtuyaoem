@@ -1,4 +1,4 @@
-"""Diagnostics support for LocalTuya."""
+"""Diagnostics support for Local Tuya OEM."""
 from __future__ import annotations
 
 import copy

@@ -184,7 +184,7 @@ class TuyaDevice(pytuya.TuyaListener, pytuya.ContextualLogger):
             self._connect_task = asyncio.create_task(self._make_connection())
 
     async def _make_connection(self):
-        """Subscribe localtuya entity events."""
+        """Subscribe localtuyaoem entity events."""
         self.info("Trying to connect to %s...", self._dev_config_entry[CONF_HOST])
 
         try:
@@ -262,7 +262,7 @@ class TuyaDevice(pytuya.TuyaListener, pytuya.ContextualLogger):
                 )
                 self._dispatch_status()
 
-            signal = f"localtuya_entity_{self._dev_config_entry[CONF_DEVICE_ID]}"
+            signal = f"localtuyaoem_entity_{self._dev_config_entry[CONF_DEVICE_ID]}"
             self._disconnect_task = async_dispatcher_connect(
                 self._hass, signal, _new_entity_handler
             )
@@ -347,13 +347,13 @@ class TuyaDevice(pytuya.TuyaListener, pytuya.ContextualLogger):
         self._dispatch_status()
 
     def _dispatch_status(self):
-        signal = f"localtuya_{self._dev_config_entry[CONF_DEVICE_ID]}"
+        signal = f"localtuyaoem_{self._dev_config_entry[CONF_DEVICE_ID]}"
         async_dispatcher_send(self._hass, signal, self._status)
 
     @callback
     def disconnected(self):
         """Device disconnected."""
-        signal = f"localtuya_{self._dev_config_entry[CONF_DEVICE_ID]}"
+        signal = f"localtuyaoem_{self._dev_config_entry[CONF_DEVICE_ID]}"
         async_dispatcher_send(self._hass, signal, None)
         if self._unsub_interval is not None:
             self._unsub_interval()
@@ -394,7 +394,7 @@ class LocalTuyaEntity(RestoreEntity, pytuya.ContextualLogger):
         self.set_logger(logger, self._dev_config_entry[CONF_DEVICE_ID])
 
     async def async_added_to_hass(self):
-        """Subscribe localtuya events."""
+        """Subscribe localtuyaoem events."""
         await super().async_added_to_hass()
 
         self.debug("Adding %s with configuration: %s", self.entity_id, self._config)
@@ -415,13 +415,13 @@ class LocalTuyaEntity(RestoreEntity, pytuya.ContextualLogger):
                 # Update HA
                 self.schedule_update_ha_state()
 
-        signal = f"localtuya_{self._dev_config_entry[CONF_DEVICE_ID]}"
+        signal = f"localtuyaoem_{self._dev_config_entry[CONF_DEVICE_ID]}"
 
         self.async_on_remove(
             async_dispatcher_connect(self.hass, signal, _update_handler)
         )
 
-        signal = f"localtuya_entity_{self._dev_config_entry[CONF_DEVICE_ID]}"
+        signal = f"localtuyaoem_entity_{self._dev_config_entry[CONF_DEVICE_ID]}"
         async_dispatcher_send(self.hass, signal, self.entity_id)
 
     @property

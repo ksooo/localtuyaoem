@@ -1,4 +1,4 @@
-"""Config flow for LocalTuya integration integration."""
+"""Config flow for Local Tuya OEM integration."""
 import errno
 import logging
 import time
@@ -400,7 +400,7 @@ async def _do_cloud_setup_step(step, defaults_from, user_input, success_callback
 
 
 class LocaltuyaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for LocalTuya integration."""
+    """Handle a config flow for Local Tuya OEM integration."""
 
     VERSION = ENTRIES_VERSION
     CONNECTION_CLASS = config_entries.CONN_CLASS_LOCAL_POLL
@@ -456,7 +456,7 @@ class LocaltuyaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         user_input[CONF_DEVICES] = {}
 
         return self.async_create_entry(
-            title="Local Tuya",
+            title="Local Tuya OEM",
             data=user_input,
         )
 
@@ -468,10 +468,10 @@ class LocaltuyaConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
 
 class LocalTuyaOptionsFlowHandler(config_entries.OptionsFlow):
-    """Handle options flow for LocalTuya integration."""
+    """Handle options flow for Local Tuya OEM integration."""
 
     def __init__(self, config_entry):
-        """Initialize localtuya options flow."""
+        """Initialize localtuyaoem options flow."""
         self.config_entry = config_entry
         # self.dps_strings = config_entry.data.get(CONF_DPS_STRINGS, gen_dps_strings())
         # self.entities = config_entry.data[CONF_ENTITIES]

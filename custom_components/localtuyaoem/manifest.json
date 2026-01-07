@@ -1,0 +1,14 @@
+{
+  "domain": "localtuyaoem",
+  "name": "Local Tuya OEM integration",
+  "codeowners": [
+    "@rospogrigio", "@postlund", "@avataar", "@ksooo"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://github.com/ksooo/localtuyaoem/",
+  "iot_class": "local_push",
+  "issue_tracker": "https://github.com/ksooo/localtuyaoem/issues",
+  "requirements": [],
+  "version": "2026.1.0"
+}

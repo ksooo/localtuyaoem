@@ -40,7 +40,7 @@ class CloudApi:
 
     @staticmethod
     def create_api(hass: HomeAssistant, config: dict) -> CloudApi:
-        """Create a CloudApi instance from the provided LocalTuya config."""
+        """Create a CloudApi instance from the provided Local Tuya OEM config."""
         cloud_type = config.get(CONF_CLOUD_TYPE)
 
         if cloud_type == CLOUD_TYPE_NONE:

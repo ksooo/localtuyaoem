@@ -72,7 +72,7 @@
                 "description": "Options cannot be edited when configured via YAML."
             },
             "init": {
-                "title": "LocalTuya Configuration",
+                "title": "Local Tuya OEM Configuration",
                 "description": "Please select the desired action.",
                 "menu_options": {
                     "add_device": "Add a new device",
@@ -251,7 +251,7 @@
     "services": {
         "reload": {
             "name": "Reload",
-            "description": "Reload localtuya and reconnect to all devices."
+            "description": "Reload localtuyaoem and reconnect to all devices."
         },
         "set_dp": {
             "name": "Set datapoint",
@@ -272,5 +272,5 @@
             }
         }
     },
-    "title": "LocalTuya"
+    "title": "Local Tuya OEM"
 }
